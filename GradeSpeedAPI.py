@@ -90,6 +90,8 @@ class Gradespeed:
                     tempDict[getTable(category)[0][columnNumber].replace("\xa0","")] = assignment[columnNumber].replace("\xa0","")
                 if not 'Points Possible' in tempDict:
                     tempDict['Points Possible'] = 100
+                if not 'Points Earned' in tempDict:
+                    tempDict['Points Earned'] = tempDict['Grades']
                 gradesList.append(tempDict)
             # print(average)
             # print(weight)
@@ -115,7 +117,12 @@ class Hypothetical:
 
     def addAssignment(self, category):
         print('todo')
-    def calculateAverage():
-        return "calculate average - todo"
-    def getClass():
+    def calculateAverage(self):
+        for category in self.grades['categories']:
+            totalPossible = 0
+            totalPoints = 0
+            for assignment in category:
+                totalPossible += assignment['Points Possible']
+                totalPoints += assignment['Points Earned']
+    def getClass(self):
         return "todo"
