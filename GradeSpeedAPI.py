@@ -93,6 +93,8 @@ class Gradespeed:
                 if not 'Points Earned' in tempDict:
                     tempDict['Points Earned'] = tempDict['Grades']
                 gradesList.append(tempDict)
+                tempDict['Points Earned'] = float(tempDict['Points Earned'])
+                tempDict['Points Possible'] = float(tempDict['Points Possible'])
             # print(average)
             # print(weight)
             # print(categoryName)
@@ -117,12 +119,17 @@ class Hypothetical:
 
     def addAssignment(self, category):
         print('todo')
-    def calculateAverage(self):
+    def getAverage(self):
+        totalScore = 0
         for category in self.grades['categories']:
+            print(category)
             totalPossible = 0
             totalPoints = 0
-            for assignment in category:
+            for assignment in category['grades']:
+                print(assignment)
                 totalPossible += assignment['Points Possible']
                 totalPoints += assignment['Points Earned']
+            totalScore += float(category['weight'].replace("%",""))*(totalPoints/totalPossible)
+        return totalScore
     def getClass(self):
         return "todo"
