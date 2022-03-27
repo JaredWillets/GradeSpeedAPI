@@ -34,9 +34,26 @@ These dictionary keys are given by the table headers for the grade table. The ca
 
 More updates will be coming soon. Please email me any time at willetsjared@gmail.com with questions, suggestions, or concerns.
 
+This code creates a hypothetical class:
+
+`hyp = GradeSpeedAPI.Hypothetical(client, classURL)`
+
+This is assuming that classURL is a working URL to a GradeSpeed class such as the one seen above. This imports the grades and prepares the grade object. The following code shows how to add an assignment to the hypothetical class:
+
+`hyp.addAssignment("[Insert Name here]",[Points Earned],[Points Possible])`
+
+To get the new averages as well as set the class' grades object, user the `getAverage()` command, which is shown here:
+
+`print(hyp.getAverage())`
+
+This line prints the percentage value of the overall average of the class and sets the category averages. These category averages can be accesssed like this:
+
+`print(hyp.getClass())`
+
+This will return a class ouptut similar to the normal grades, but with the hypothetical assignments added in and averages adjusted.
+
 Features coming soon:
 
-- Hypothetical Grade Calculator
 - GUI
 - Online API using Flask
 - JavaScript Version
