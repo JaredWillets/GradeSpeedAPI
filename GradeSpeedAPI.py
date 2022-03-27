@@ -108,3 +108,11 @@ class Gradespeed:
 class Hypothetical:
     def __init__(self, client, classURL):
         self.client = client
+        self.classURL = classURL
+
+    def addAssignment(self, category):
+        print('todo')
+    def calculateAverage():
+        return "calculate average - todo"
+    def getClass():
+        return "todo"
