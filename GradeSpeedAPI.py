@@ -104,3 +104,7 @@ class Gradespeed:
             "average":gradePage.find("p",attrs={"class":"CurrentAverage"}).contents[0].split(": ")[1]
         }
         return final
+
+class Hypothetical:
+    def __init__(self, client, classURL):
+        self.client = client
