@@ -91,7 +91,7 @@ class Gradespeed:
                 if not 'Points Possible' in tempDict:
                     tempDict['Points Possible'] = 100
                 if not 'Points Earned' in tempDict:
-                    tempDict['Points Earned'] = tempDict['Grades']
+                    tempDict['Points Earned'] = tempDict['Grade']
                 gradesList.append(tempDict)
                 tempDict['Points Earned'] = float(tempDict['Points Earned'])
                 tempDict['Points Possible'] = float(tempDict['Points Possible'])
@@ -117,19 +117,31 @@ class Hypothetical:
         self.classURL = classURL
         self.grades = client.getClass(self.classURL)
 
-    def addAssignment(self, category):
-        print('todo')
+    
+    def addAssignment(self, category, name, pointsEarned, pointsPossible):
+        index = False
+        for categoryNum, categoryObj in enumerate(self.grades['categories']):
+            if categoryObj['category'] == category:
+                index = categoryNum
+        if index == False and index != 0:
+            raise Exception("This category does not work.")
+        self.grades['categories'][index]['grades'].append({
+            "Assignment":name,
+            "Points Earned":pointsEarned,
+            "Points Possible":pointsPossible
+            })
+    
     def getAverage(self):
         totalScore = 0
         for category in self.grades['categories']:
-            print(category)
             totalPossible = 0
             totalPoints = 0
             for assignment in category['grades']:
-                print(assignment)
                 totalPossible += assignment['Points Possible']
                 totalPoints += assignment['Points Earned']
+            category['average'] = 100*(totalPoints/totalPossible)
             totalScore += float(category['weight'].replace("%",""))*(totalPoints/totalPossible)
+        self.grades['average'] = totalScore
         return totalScore
     def getClass(self):
-        return "todo"
+        return self.grades
