@@ -60,8 +60,6 @@ This line will return an output that looks similar to this:
 
 `{'12/17/2021': [('HRM', 'E'), ('P2', 'Absent Excused')]}`
 
-An online version of this can be found at https://gradespeed.jaredwillets.repl.co/. More documentation for this online API will be added soon.
-
 Features coming soon:
 
 - GUI
