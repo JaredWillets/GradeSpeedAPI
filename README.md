@@ -52,9 +52,16 @@ This line prints the percentage value of the overall average of the class and se
 
 This will return a class ouptut similar to the normal grades, but with the hypothetical assignments added in and averages adjusted.
 
+Attendance is a newer feature that was recently added. To get attendance information, use the following lines of code:
+
+`client.getAttendance()`
+
+This line will return an output that looks similar to this:
+
+`{'12/17/2021': [('HRM', 'E'), ('P2', 'Absent Excused')]}`
+
 Features coming soon:
 
 - GUI
 - Online API using Flask
 - JavaScript Version
-- Attendance and other GradeSpeed Features
