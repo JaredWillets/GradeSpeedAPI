@@ -110,7 +110,30 @@ class Gradespeed:
             "average":gradePage.find("p",attrs={"class":"CurrentAverage"}).contents[0].split(": ")[1]
         }
         return final
-
+    def getAttendance(self):
+        self.updateGrades()
+        url = "https://dodea.gradespeed.net/pc/ParentStudentAttend.aspx"
+        attendancePage = BeautifulSoup(self.requests.get(url).content, features = "html.parser")
+        tableList = []
+        for rawTable in attendancePage.findAll("table", attrs = {"class":"DataTable"}):
+            rows = rawTable.findAll("tr", attrs = {"class":["DataRow","TableHeader","DataRowAlt"]})
+            table = []
+            for rawRow in rows[1:]:
+                row = []
+                for rawCol in rawRow.findAll("td"):
+                    try:row.append(rawCol.contents[0])
+                    except:row.append("")
+                table.append(row)
+            tableList.append(table)
+        for table in tableList:
+            currentDate = ""
+            dateDict = {}
+            for row in table:
+                if row[0] != "":
+                    currentDate = row[0].split(" ")[0]
+                    dateDict[currentDate] = []
+                dateDict[currentDate].append((row[1],row[2]))
+        return dateDict
 class Hypothetical:
     def __init__(self, client, classURL):
         self.client = client
