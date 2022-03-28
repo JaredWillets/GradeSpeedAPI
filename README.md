@@ -63,5 +63,4 @@ This line will return an output that looks similar to this:
 Features coming soon:
 
 - GUI
-- Online API using Flask
 - JavaScript Version
