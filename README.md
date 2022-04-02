@@ -59,8 +59,3 @@ Attendance is a newer feature that was recently added. To get attendance informa
 This line will return an output that looks similar to this:
 
 `{'12/17/2021': [('HRM', 'E'), ('P2', 'Absent Excused')]}`
-
-Features coming soon:
-
-- GUI
-- JavaScript Version
