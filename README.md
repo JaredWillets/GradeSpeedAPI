@@ -1,4 +1,4 @@
-# GradeSpeedAPI
+# GradeSpeedAPI (Deprecated)
  An API to access grades from DoDEA Gradespeed
 
 To load the API code, use this command:
